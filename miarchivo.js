@@ -1,8 +1,7 @@
-import Persona from "./js/persona.js";
-
 function yes_no_prompt(message){
+    let opt;
     do{
-        let opt = promp(`${message} (y/n)`)
+        opt = prompt(`${message} (y/n)`)
         if(!['y', 'n'].includes(opt.toLowerCase()))
             opt = false;
     }while(opt == false);
@@ -13,9 +12,9 @@ alert("Bienvenidx al gestor de gastos!")
 
 let personas = Array();
 do{
-    personas.push(Persona.requestViaPrompt());
+    personas.push(Persona.prototype.requestViaPrompt());
 }while(yes_no_prompt("Desea continuar agregando personas?") == 'y');
 
-for (const persona in personas){
-    persona.showData();
-}
+personas.forEach(function(element){
+    element.showData();
+});

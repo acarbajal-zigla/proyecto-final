@@ -1,5 +1,3 @@
-const check_is_number = (valor) => { if (isNaN(valor)) {return false; } else return true };
-
 class Presupuesto{
     constructor(montoInicial, gastos){
         if((check_is_number(montoInicial) & check_is_number(gastos)) != true){
@@ -44,6 +42,6 @@ class Presupuesto{
             gastos = prompt("Ingrese el total de gastos");
         }while(check_is_number(gastos) == false);
 
-        return Presupuesto(parseFloat(montoInicial), parseFloat(gastos));
+        return new Presupuesto(parseFloat(montoInicial), parseFloat(gastos));
     }
 }

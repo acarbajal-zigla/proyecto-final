@@ -1,11 +1,5 @@
-import Presupuesto from './presupuesto.js';
-
 class Persona{
-    constructor(nombre, apellido, presupuesto){
-        this.nombre = nombre
-        this.apellido = apellido
-        this.presupuesto = presupuesto
-    }
+    constructor(){}
     
     // Setters
     setNombre(nombre){
@@ -75,10 +69,12 @@ class Persona{
         }while(apellido == false || apellido.length < 2);
         
         do{
-            presupuesto = Presupuesto.requestViaPrompt();
+            this.presupuesto = Presupuesto.prototype.requestViaPrompt();
         }while(presupuesto == false);
 
-        return Persona(nombre, apellido, presupuesto);
+        this.nombre = nombre;
+        this.apellido = apellido;
+        return this;
     }
 }
 
