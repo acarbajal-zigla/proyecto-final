@@ -1,4 +1,4 @@
-const check_is_number = (valor) => { if (isNaN(valor)) {return false; } else return true };
+const check_is_number = (valor) => { if (isNaN(valor)) { return false; } else return true };
 
 function get_datos() {
     const DATOS_SOLICITADOS = ["nombre", "apellido", "edad", "gastos de la última semana", "presupuesto inicial"];
