@@ -1,53 +1,59 @@
-class Persona{
-    constructor(){}
-    
+class Persona {
+    constructor(nombre, apellido, montoInicial, gastosMensuales) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.montoInicial = montoInicial;
+        this.gastosMensuales = gastosMensuales;
+    }
+
     // Setters
-    setNombre(nombre){
-        if(nombre.length>1){
-            this.nombre=nombre;
+    setNombre(nombre) {
+        if (nombre.length > 1) {
+            this.nombre = nombre;
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
 
-    setApellido(apellido){
-        if(apellido.length>1){
-            this.apellido=apellido;
+    setApellido(apellido) {
+        if (apellido.length > 1) {
+            this.apellido = apellido;
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
 
-    setDomicilio(domicilio){
+    setDomicilio(domicilio) {
         this.domicilio = domicilio;
     }
 
-    setPresupuesto(presupuesto){
-        if(typeof(presupuesto) != typeof(Presupuesto))
+    setPresupuesto(presupuesto) {
+        if (typeof (presupuesto) != typeof (Presupuesto))
             throw "El presupuesto debe ser un objeto Presupuesto";
-        else{
+        else {
             this.presupuesto = presupuesto;
         }
     }
 
     // Getters
-    getNombre(){
+    getNombre() {
         return this.nombre;
     }
 
-    getApellido(){
+    getApellido() {
         return this.apellido;
     }
 
-    getDomicilio(){
+    getDomicilio() {
         return this.domicilio;
     }
 
-    showData(){
+    /*
+    showData() {
         const text = `Nombre: ${this.nombre}\n
         Apellido: ${this.apellido}\n
         Presupuesto inicial: $${this.presupuesto.getMontoInicial()}\n
@@ -57,24 +63,28 @@ class Persona{
         alert(text);
     }
 
-    requestViaPrompt(){
+    requestViaPrompt() {
         let nombre, apellido, presupuesto;
-        
-        do{
+
+        do {
             nombre = prompt('Por favor, ingrese su nombre. Debe tener al menos 2 caracteres.');
-        }while(nombre == false || nombre.length < 2);
-        
-        do{
+        } while (nombre == false || nombre.length < 2);
+
+        do {
             apellido = prompt('Por favor, ingrese su apellido. Debe tener al menos 2 caracteres.');
-        }while(apellido == false || apellido.length < 2);
-        
-        do{
+        } while (apellido == false || apellido.length < 2);
+
+        do {
+            // Si los valores ingresados no son válidos, devuelve false
             this.presupuesto = Presupuesto.prototype.requestViaPrompt();
-        }while(presupuesto == false);
+        } while (presupuesto == false);
 
         this.nombre = nombre;
         this.apellido = apellido;
         return this;
     }
+    */
+
+
 }
 

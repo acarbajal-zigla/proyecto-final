@@ -2,21 +2,24 @@
 <html lang=es>
 
 <head>
-    <title>Entregable 4 - Carbajal</title>
-    <script type="module" src="miarchivo.js"></script>
-    <script src="./js/persona.js"></script>
-    <script src="./js/presupuesto.js"></script>
+    <title>Gestor de gastos - Carbajal</title>
+    <script type="module" src="./js/app.js"></script>
+    <script src="./js/classes/persona.js"></script>
+    <script src="./js/classes/presupuesto.js"></script>
     <script src="./js/my_funcs.js"></script>
+    <script src="./js/crud.js"></script>
 </head>
 
 <body>
     <h2>Bienvenidx!</h2>
-    <form id="formDatosPersona" action="submit">
+    <form id="form-persona">
         <input id='input-nombre' type="text">
         <input id='input-apellido' type="text">
         <input id='input-montoInicial' type="number">
         <input id='input-gastosMensuales' type="number">
-        
+        <div>
+            <button>Agregar persona</button>
+        </div>
     </form>
 </body>
 
