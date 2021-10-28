@@ -16,13 +16,14 @@ class Presupuesto {
     }
 
     getRestoNeto() {
-        return this.montoInicial - this.gastos
+        const resto = this.montoInicial - this.gastos
+        return resto > 0 ? resto : 0
     }
 
     getRestoDiario() {
         let fecha = new Date();
         let dias = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate() - fecha.getDate();
-        return this.getPresupuestoRestante() / dias;
+        return this.getRestoNeto() / dias
     }
 
     agregarGasto(gasto) {
