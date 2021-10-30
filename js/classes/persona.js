@@ -1,14 +1,26 @@
 class Persona {
-    constructor(nombre, apellido, montoInicial, gastosMensuales) {
-        if (nombre.length > 1 && apellido.length > 1) {
+    constructor(dni, nombre, apellido, montoInicial, gastosMensuales) {
+        let ret = true;
+        if (check_is_number(dni) == true){
+            if(dni<=0){
+                ret = false;
+            }
+        }
+
+        ret &= (nombre.length > 1 && apellido.length > 1);
+        
+        const presupuesto = new Presupuesto(montoInicial, gastosMensuales);
+        if (presupuesto == false)
+            ret = false;
+
+        if (ret == true){
+            this.dni = dni;
             this.nombre = nombre;
             this.apellido = apellido;
+            this.presupuesto = presupuesto;
         }
         else
-            return false;
-        this.presupuesto = new Presupuesto(montoInicial, gastosMensuales);
-        if (this.presupuesto == false)
-            return false;
+            return ret;
     }
 
     // Setters
@@ -42,19 +54,6 @@ class Persona {
         else {
             this.presupuesto = presupuesto;
         }
-    }
-
-    // Getters
-    getNombre() {
-        return this.nombre;
-    }
-
-    getApellido() {
-        return this.apellido;
-    }
-
-    getDomicilio() {
-        return this.domicilio;
     }
 }
 

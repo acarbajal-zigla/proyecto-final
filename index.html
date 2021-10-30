@@ -7,13 +7,29 @@
 
 <body>
     <h2>Bienvenidx!</h2>
+
+    <h3>Ingresar una nueva persona</h3>
     <form id="form-persona">
-        <input id='input-nombre' type="text">
-        <input id='input-apellido' type="text">
-        <input id='input-montoInicial' type="number">
-        <input id='input-gastosMensuales' type="number">
+        <label for='input-dni'>DNI (sin puntos)</label><br>
+        <input id='input-dni' min=0 type="number"><br>
+        <label for='input-nombre'>Nombre</label><br>
+        <input id='input-nombre' type="text"><br>
+        <label for='input-apellido'>Apellido</label><br>
+        <input id='input-apellido' type="text"><br>
+        <label for='input-montoInicial'>Monto inicial</label><br>
+        <input id='input-montoInicial' min=0 type="number"><br>
+        <label for='input-gastosMensuales'>Gastos mensuales</label><br>
+        <input id=input-gastosMensuales min=0 type="number"><br>
         <div>
             <button>Agregar persona</button>
+        </div>
+    </form>
+    <h3>Eliminar un registro</h3>
+    <form id="form-eliminar-persona">
+        <label for=input-eliminar-dni>DNI (sin puntos)</label><br>
+        <input id=input-eliminar-dni type="text">
+        <div>
+            <button>Eliminar</button>
         </div>
     </form>
     <div>
