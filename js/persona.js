@@ -51,9 +51,9 @@ class Persona{
         const text = `Nombre: ${this.nombre}\n
         Apellido: ${this.apellido}\n
         Presupuesto inicial: $${this.presupuesto.getMontoInicial()}\n
-        Gastos: $${this.presupuesto.getGastos}\n
-        Presupuesto para el resto del mes: $${this.presupuesto.getPresupuestoRestante()}\n
-        Monto por día (resto del mes): $${this.presupuesto.getPresupuestoRestoMes()}/día`;
+        Gastos: $${this.presupuesto.getGastos()}\n
+        Presupuesto para el resto del mes: $${this.presupuesto.getRestoNeto()}\n
+        Monto por día (resto del mes): $${this.presupuesto.getRestoDiario()}/día`;
         alert(text);
     }
 

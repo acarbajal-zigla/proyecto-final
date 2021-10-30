@@ -22,7 +22,7 @@ class Presupuesto{
     getRestoDiario(){
         let fecha = new Date();
         let dias = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate() - fecha.getDate();
-        return this.getPresupuestoRestante() / dias;
+        return this.getRestoNeto() / dias;
     }
 
     agregarGasto(gasto){
