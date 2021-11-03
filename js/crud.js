@@ -5,10 +5,19 @@ const inputNombre = document.getElementById('input-nombre');
 const inputApellido = document.getElementById('input-apellido');
 const inputMontoInicial = document.getElementById('input-montoInicial');
 const inputGastosMensuales = document.getElementById('input-gastosMensuales');
-const listaPersonas = document.getElementById("listaPersonas");
 
 const formEliminar = document.getElementById('form-eliminar-persona');
 const inputEliminarDNI = document.getElementById('input-eliminar-dni');
+
+const divMenuAcciones = document.getElementById('menu-acciones');
+const agregarPersonaMenuButton = document.getElementById('agregar-persona-button');
+const eliminarPersonaMenuButton = document.getElementById('eliminar-persona-button');
+const verRegistrosMenuButton = document.getElementById('ver-personas-button');
+const divIngresoPersona = document.getElementById('ingreso-persona');
+const divEliminarPersona = document.getElementById('eliminar-persona');
+const listaPersonas = document.getElementById("listaPersonas");
+
+const body = document.getElementsByTagName('body');
 
 let personas = JSON.parse(localStorage.getItem('personas')) || [];
 
@@ -90,3 +99,40 @@ formEliminar.addEventListener("submit", (event) => {
     remove(dni);
     renderPersonasList();
 });
+
+agregarPersonaMenuButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    if(divIngresoPersona.style.display === 'none'){
+        hideAllMenu();
+        divIngresoPersona.style.display='block';
+    }
+    else
+        divIngresoPersona.style.display='none';
+});
+
+eliminarPersonaMenuButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    if(divEliminarPersona.style.display === 'none'){
+        hideAllMenu();
+        divEliminarPersona.style.display='block';
+    }
+    else
+        divEliminarPersona.style.display='none';
+});
+
+verRegistrosMenuButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    if(listaPersonas.style.display === 'none'){
+        hideAllMenu(this.id);
+        listaPersonas.style.display='block';
+        renderPersonasList();
+    }
+    else
+        listaPersonas.style.display='none';
+});
+
+function hideAllMenu(){
+    for (let element of body.children) {
+        element.style.display = 'none';
+    }
+}
