@@ -1,44 +1,33 @@
-const check_is_number = (valor) => { if (isNaN(valor)) {return false; } else return true };
-
-function get_datos() {
-    const DATOS_SOLICITADOS = ["nombre", "apellido", "edad", "gastos de la última semana", "presupuesto inicial"];
-    let datos = new Array();
-    let dato;
-
-    for (let i = 0; i < DATOS_SOLICITADOS.length(); i++) {
-        do {
-            dato = prompt(`Por favor, ingrese su ${DATOS_SOLICITADOS[i]}`);
-            dato = check_dato(dato);
-        } while (dato == false);
-        datos.push(dato);
-    }
-    return datos;
+function check_is_number(valor) {
+    if (isNaN(valor))
+        return false;
+    else
+        return true;
 }
 
-function check_dato(dato) {
-    const check_is_number = (valor, msg) => { if (isNaN(valor)) { alert(msg); return false; } else return true };
+function renderPersonasTable() {
+    tablaPersonas.innerHTML = "";
+    let tableBody = document.createElement("tbody");
+    let header = ['Nombre', 'Apellido', 'Presupuesto inicial', 'Gastos', 'Presupuesto para el resto del mes', 'Monto por día (resto del mes)'];
+    let filaTitulos = document.createElement("tr");
 
-    if (dato == null) {
-        alert("Debe ingresar un dato.")
-        return false
+    for (let element of header) {
+        let celda = document.createElement("td");
+        celda.appendChild(document.createTextNode(element));
+        filaTitulos.appendChild(celda);
     }
-    if (DATOS_SOLICITADOS[i] == "nombre" || DATOS_SOLICITADOS[i] == "apellido") {
-        if (dato.length() > 1)
-            return dato;
-        else
-            return false
-    }
-    else if (DATOS_SOLICITADOS[i] == "edad" || DATOS_SOLICITADOS[i] == "gastos de la última semana" || DATOS_SOLICITADOS[i] == "presupuesto inicial") {
-        if (check_is_number(dato, "Debe ingresar un número.") == true) {
-            if (DATOS_SOLICITADOS[i] == "edad")
-                return parseInt(dato);
-            else
-                return parseFloat(dato);
+    tableBody.appendChild(filaTitulos);
+
+    for (let persona of personas) {
+        let fila = document.createElement("tr");
+        let presupuesto = new Presupuesto(persona.presupuesto.montoInicial, persona.presupuesto.gastos)
+
+        for (element of [persona.nombre, persona.apellido, presupuesto.getMontoInicial(), presupuesto.getGastos(), presupuesto.getRestoNeto(), presupuesto.getRestoDiario()]) {
+            let celda = document.createElement("td");
+            celda.appendChild(document.createTextNode(element));
+            fila.appendChild(celda);
         }
-        else
-            return false
+        tableBody.appendChild(fila);
     }
-    else {
-        return false;
-    }
+    tablaPersonas.appendChild(tableBody);
 }

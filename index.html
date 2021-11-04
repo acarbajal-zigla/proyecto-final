@@ -2,15 +2,62 @@
 <html lang=es>
 
 <head>
-    <title>Entregable 4 - Carbajal</title>
-    <script type="module" src="miarchivo.js"></script>
-    <script src="./js/persona.js"></script>
-    <script src="./js/presupuesto.js"></script>
-    <script src="./js/my_funcs.js"></script>
+    <title>Gestor de gastos</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
-<body>
-    <h2>Bienvenidx!</h2>
+<body id=main-body>
+    <h2>Bienvenidx al gestor de gastos</h2>
+    <div id=menu-acciones> Menú
+        <br>
+        <button id=agregar-persona-button>Agregar persona</button><br>
+        <br>
+        <button id=eliminar-persona-button>Eliminar persona</button><br>
+        <br>
+        <button id=ver-personas-button>Ver lista</button>
+    </div>
+    <div id=ingreso-persona style=display:none>
+        <h3>Ingresar una nueva persona</h3>
+        <form id="form-persona">
+            <label for='input-dni'>DNI (sin puntos)</label><br>
+            <input id='input-dni' min=0 type="number"><br>
+            <label for='input-nombre'>Nombre</label><br>
+            <input id='input-nombre' type="text"><br>
+            <label for='input-apellido'>Apellido</label><br>
+            <input id='input-apellido' type="text"><br>
+            <label for='input-montoInicial'>Monto inicial</label><br>
+            <input id='input-montoInicial' min=0 type="number"><br>
+            <label for='input-gastosMensuales'>Gastos mensuales</label><br>
+            <input id=input-gastosMensuales min=0 type="number"><br>
+            <div>
+                <button>Agregar persona</button>
+            </div>
+    </div>
+    <div id=eliminar-persona style=display:none>
+        </form>
+        <h3>Eliminar un registro</h3>
+        <form id="form-eliminar-persona">
+            <label for=input-eliminar-dni>DNI (sin puntos)</label><br>
+            <input id=input-eliminar-dni type="text">
+            <div>
+                <button>Eliminar</button>
+            </div>
+        </form>
+    </div>
+    <table id=tabla-personas style=display:none></table>
 </body>
+
+<script type="module" src="./js/app.js"></script>
+<script src="./js/classes/persona.js"></script>
+<script src="./js/classes/presupuesto.js"></script>
+<script src="./js/my_funcs.js"></script>
+<script src="./js/crud.js"></script>
+<script src="./js/events.js"></script>
 
 </html>
