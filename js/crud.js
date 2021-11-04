@@ -15,30 +15,37 @@ const eliminarPersonaMenuButton = document.getElementById('eliminar-persona-butt
 const verRegistrosMenuButton = document.getElementById('ver-personas-button');
 const divIngresoPersona = document.getElementById('ingreso-persona');
 const divEliminarPersona = document.getElementById('eliminar-persona');
-const listaPersonas = document.getElementById("listaPersonas");
-
-const body = document.getElementsByTagName('body');
+const tablaPersonas = document.getElementById("tabla-personas");
 
 let personas = JSON.parse(localStorage.getItem('personas')) || [];
 
-renderPersonasList();
+renderPersonasTable();
 
-function renderPersonasList() {
-    listaPersonas.innerHTML = "";
-    for (let persona of personas) {
-        let itemPersona = document.createElement('li');
-        let presupuesto = new Presupuesto(persona.presupuesto.montoInicial, persona.presupuesto.gastos)
-        itemPersona.innerHTML = `
-                                Nombre: ${persona.nombre}<br>
-                                Apellido: ${persona.apellido}<br>
-                                Presupuesto inicial: $${presupuesto.getMontoInicial()}<br>
-                                Gastos: $${presupuesto.getGastos()}<br>
-                                Presupuesto para el resto del mes: $${presupuesto.getRestoNeto()}<br>
-                                Monto por día (resto del mes): $${presupuesto.getRestoDiario()}/día
-                                `;
+function renderPersonasTable() {
+    tablaPersonas.innerHTML = "";
+    let tableBody = document.createElement("tbody");
+    let header = ['Nombre', 'Apellido', 'Presupuesto inicial', 'Gastos', 'Presupuesto para el resto del mes', 'Monto por día (resto del mes)'];
+    let filaTitulos = document.createElement("tr");
 
-        listaPersonas.appendChild(itemPersona);
+    for (let element of header) {
+        let celda = document.createElement("td");
+        celda.appendChild(document.createTextNode(element));
+        filaTitulos.appendChild(celda);
     }
+    tableBody.appendChild(filaTitulos);
+
+    for (let persona of personas) {
+        let fila = document.createElement("tr");
+        let presupuesto = new Presupuesto(persona.presupuesto.montoInicial, persona.presupuesto.gastos)
+
+        for (element of [persona.nombre, persona.apellido, presupuesto.getMontoInicial(), presupuesto.getGastos(), presupuesto.getRestoNeto(), presupuesto.getRestoDiario()]) {
+            let celda = document.createElement("td");
+            celda.appendChild(document.createTextNode(element));
+            fila.appendChild(celda);
+        }
+        tableBody.appendChild(fila);
+    }
+    tablaPersonas.appendChild(tableBody);
 }
 
 function getAll() {
@@ -50,10 +57,10 @@ function create(persona) {
     if (Object.keys(persona).length === 0)
         alert("Revise que los datos sean correctos");
     else {
-        if(findPersona(persona.dni) == false){
+        if (findPersona(persona.dni) == false) {
             alert('Ya existe una persona con ese DNI.');
         }
-        else{
+        else {
             personas.push(persona);
             localStorage.setItem('personas', JSON.stringify(personas));
         }
@@ -67,72 +74,13 @@ function findPersona(dni) {
 
 const remove = (dni) => {
     const persona = findPersona(dni);
-    if(persona){
+    if (persona) {
         const index = personas.indexOf(persona);
         personas.splice(index, 1);
         localStorage.setItem('personas', JSON.stringify(personas));
     }
 }
 
-// Escuchar el evento submit del formulario ppal
-formPersona.addEventListener("submit", (event) => {
-    event.preventDefault();
 
-    const dni = inputDNI.value;
-    const nombre = inputNombre.value;
-    const apellido = inputApellido.value;
-    const montoInicial = inputMontoInicial.value;
-    const gastosMensuales = inputGastosMensuales.value;
 
-    formPersona.reset();
-    const persona = new Persona(dni, nombre, apellido, montoInicial, gastosMensuales);
-    if (persona)
-        create(persona);
-    renderPersonasList();
-});
 
-// Escuchar el evento submit del formulario de ramocion de personas
-formEliminar.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const dni = inputEliminarDNI.value;
-    remove(dni);
-    renderPersonasList();
-});
-
-agregarPersonaMenuButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    if(divIngresoPersona.style.display === 'none'){
-        hideAllMenu();
-        divIngresoPersona.style.display='block';
-    }
-    else
-        divIngresoPersona.style.display='none';
-});
-
-eliminarPersonaMenuButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    if(divEliminarPersona.style.display === 'none'){
-        hideAllMenu();
-        divEliminarPersona.style.display='block';
-    }
-    else
-        divEliminarPersona.style.display='none';
-});
-
-verRegistrosMenuButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    if(listaPersonas.style.display === 'none'){
-        hideAllMenu(this.id);
-        listaPersonas.style.display='block';
-        renderPersonasList();
-    }
-    else
-        listaPersonas.style.display='none';
-});
-
-function hideAllMenu(){
-    for (let element of body.children) {
-        element.style.display = 'none';
-    }
-}

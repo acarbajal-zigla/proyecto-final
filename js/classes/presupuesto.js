@@ -3,8 +3,8 @@ class Presupuesto {
         if ((check_is_number(montoInicial) & check_is_number(gastos)) != true) {
             return false;
         }
-        this.montoInicial = parseFloat(montoInicial?montoInicial:0);
-        this.gastos = parseFloat(gastos?gastos:0);
+        this.montoInicial = parseFloat(montoInicial ? montoInicial : 0);
+        this.gastos = parseFloat(gastos ? gastos : 0);
     }
 
     getGastos() {
@@ -23,7 +23,7 @@ class Presupuesto {
     getRestoDiario() {
         let fecha = new Date();
         let dias = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate() - fecha.getDate();
-        return this.getRestoNeto() / dias
+        return Number((this.getRestoNeto() / dias).toFixed(1));
     }
 
     agregarGasto(gasto) {
