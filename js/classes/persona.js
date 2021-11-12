@@ -1,7 +1,7 @@
 class Persona {
     constructor(dni, nombre, apellido, montoInicial, gastosMensuales) {
         let ret = true;
-        if (check_is_number(dni) == true){
+        if (!isNaN(dni)){
             if(dni<=0){
                 ret = false;
             }

@@ -1,42 +1,26 @@
-agregarPersonaMenuButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (divIngresoPersona.style.display === 'none') {
-        divIngresoPersona.style.display = 'block';
-    }
-    else
-        divIngresoPersona.style.display = 'none';
+$('#agregar-persona-button').click(function(){
+    $('#ingreso-persona').toggle();
 });
 
-eliminarPersonaMenuButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (divEliminarPersona.style.display === 'none') {
-        divEliminarPersona.style.display = 'block';
-    }
-    else
-        divEliminarPersona.style.display = 'none';
+$('#eliminar-persona-button').click(function(){
+    $('#eliminar-persona').toggle();
 });
 
-verRegistrosMenuButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (tablaPersonas.style.display === 'none') {
-        tablaPersonas.style.display = 'table';
-        renderPersonasTable();
-    }
-    else
-        tablaPersonas.style.display = 'none';
+$('#ver-personas-button').click(function() {
+    $('#tabla-personas').toggle();
 });
 
 // Escuchar el evento submit del formulario ppal
-formPersona.addEventListener("submit", (event) => {
+$('#form-persona').submit(function(event) {
     event.preventDefault();
 
-    const dni = inputDNI.value;
-    const nombre = inputNombre.value;
-    const apellido = inputApellido.value;
-    const montoInicial = inputMontoInicial.value;
-    const gastosMensuales = inputGastosMensuales.value;
+    const dni = $('#input-dni').val();
+    const nombre = $('#input-nombre').val();
+    const apellido = $('#input-apellido').val();
+    const montoInicial = $('#input-montoInicial').val();
+    const gastosMensuales = $('#input-gastosMensuales').val();
 
-    formPersona.reset();
+    $('#form-persona').trigger('reset');
     const persona = new Persona(dni, nombre, apellido, montoInicial, gastosMensuales);
     if (persona)
         create(persona);
@@ -44,10 +28,10 @@ formPersona.addEventListener("submit", (event) => {
 });
 
 // Escuchar el evento submit del formulario de ramocion de personas
-formEliminar.addEventListener("submit", (event) => {
+$('#form-eliminar-persona').submit(function (event) {
     event.preventDefault();
 
-    const dni = inputEliminarDNI.value;
+    const dni = $("#input-eliminar-dni").value;
     remove(dni);
     renderPersonasTable();
 });

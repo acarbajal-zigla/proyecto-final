@@ -1,12 +1,6 @@
-function check_is_number(valor) {
-    if (isNaN(valor))
-        return false;
-    else
-        return true;
-}
-
 function renderPersonasTable() {
-    tablaPersonas.innerHTML = "";
+    $('#tabla-personas').html('');
+
     let tableBody = document.createElement("tbody");
     let header = ['Nombre', 'Apellido', 'Presupuesto inicial', 'Gastos', 'Presupuesto para el resto del mes', 'Monto por día (resto del mes)'];
     let filaTitulos = document.createElement("tr");
@@ -29,5 +23,7 @@ function renderPersonasTable() {
         }
         tableBody.appendChild(fila);
     }
-    tablaPersonas.appendChild(tableBody);
+    $('#tabla-personas').append(tableBody);
 }
+  
+    

@@ -1,6 +1,6 @@
 class Presupuesto {
     constructor(montoInicial, gastos) {
-        if ((check_is_number(montoInicial) & check_is_number(gastos)) != true) {
+        if (isNaN(montoInicial) || isNaN(gastos)) {
             return false;
         }
         this.montoInicial = parseFloat(montoInicial ? montoInicial : 0);
@@ -27,7 +27,7 @@ class Presupuesto {
     }
 
     agregarGasto(gasto) {
-        if (check_is_number(gasto) == true)
+        if (!isNaN(gasto))
             this.gastos += gasto;
         else
             return false;
