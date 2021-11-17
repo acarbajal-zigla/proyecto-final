@@ -1,26 +1,26 @@
 class Persona {
     constructor(dni, nombre, apellido, montoInicial, gastosMensuales) {
         let ret = true;
-        if (!isNaN(dni)){
-            if(dni<=0){
-                ret = false;
-            }
+        if (isNaN(dni) || dni === 0){
+            ret = false
         }
 
         ret &= (nombre.length > 1 && apellido.length > 1);
         
         const presupuesto = new Presupuesto(montoInicial, gastosMensuales);
-        if (presupuesto == false)
+        if (presupuesto === false){
             ret = false;
-
+        }   
+        console.log(ret)
         if (ret == true){
-            this.dni = dni;
+            this.dni = parseInt(dni);
             this.nombre = nombre;
             this.apellido = apellido;
             this.presupuesto = presupuesto;
         }
-        else
+        else{
             return ret;
+        }
     }
 
     // Setters

@@ -9,8 +9,9 @@ function getAll() {
 
 // Agrego una persona a la lista
 function create(persona) {
-    if (Object.keys(persona).length === 0)
+    if (Object.keys(persona).length === 0){
         alert("Revise que los datos sean correctos");
+    }
     else {
         if (findPersona(persona.dni) == false) {
             alert('Ya existe una persona con ese DNI.');
@@ -24,7 +25,7 @@ function create(persona) {
 
 // Encontrar persona por nombre y apellido
 function findPersona(dni) {
-    return personas.find(persona => (persona.dni === dni));
+    return personas.find(persona => (persona.dni == dni));
 }
 
 const remove = (dni) => {

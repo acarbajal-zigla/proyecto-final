@@ -20,10 +20,11 @@ $('#form-persona').submit(function(event) {
     const montoInicial = $('#input-montoInicial').val();
     const gastosMensuales = $('#input-gastosMensuales').val();
 
-    $('#form-persona').trigger('reset');
     const persona = new Persona(dni, nombre, apellido, montoInicial, gastosMensuales);
-    if (persona)
+    if (persona){
         create(persona);
+    }
+    $('#form-persona').trigger('reset');
     renderPersonasTable();
 });
 
@@ -31,7 +32,7 @@ $('#form-persona').submit(function(event) {
 $('#form-eliminar-persona').submit(function (event) {
     event.preventDefault();
 
-    const dni = $("#input-eliminar-dni").value;
+    const dni = $('#input-eliminar-dni').val();
     remove(dni);
     renderPersonasTable();
 });
