@@ -1,23 +1,23 @@
 class Persona {
     constructor(dni, nombre, apellido, montoInicial, gastosMensuales) {
         let ret = true;
-        if (isNaN(dni) || dni === 0){
+        if (isNaN(dni) || dni === 0) {
             ret = false
         }
 
         ret &= (nombre.length > 1 && apellido.length > 1);
-        
+
         const presupuesto = new Presupuesto(montoInicial, gastosMensuales);
-        if (presupuesto === false){
+        if (presupuesto === false) {
             ret = false;
-        }   
-        if (ret == true){
+        }
+        if (ret == true) {
             this.dni = parseInt(dni);
             this.nombre = nombre;
             this.apellido = apellido;
             this.presupuesto = presupuesto;
         }
-        else{
+        else {
             return ret;
         }
     }

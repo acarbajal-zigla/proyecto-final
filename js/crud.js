@@ -1,17 +1,17 @@
 // Obtener elmentos del DOM
-let personas = JSON.parse(localStorage.getItem("personas")) || [];
-if(personas.length == 0)
+let personas = JSON.parse(localStorage.getItem('personas')) || [];
+if (personas.length == 0)
     setDatos();
 
 
 function getAll() {
-    return JSON.parse(localStorage.getItem("personas"));
+    return JSON.parse(localStorage.getItem('personas'));
 }
 
 // Agrego una persona a la lista
 function create(persona) {
-    if (Object.keys(persona).length === 0){
-        console.log("Revise que los datos sean correctos");
+    if (Object.keys(persona).length === 0) {
+        console.log('Revise que los datos sean correctos');
     }
     else {
         if (findPersona(persona.dni) == true) {
@@ -36,7 +36,7 @@ const remove = (dni) => {
         personas.splice(index, 1);
         localStorage.setItem('personas', JSON.stringify(personas));
     }
-    else{
+    else {
         console.log(`No se encontró la persona con dni ${dni}`);
     }
 }

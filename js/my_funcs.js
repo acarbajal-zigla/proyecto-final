@@ -17,7 +17,7 @@ function renderPersonasTable() {
     for (let persona of personas) {
         let fila = document.createElement("div");
         let presupuesto = new Presupuesto(persona.presupuesto.montoInicial, persona.presupuesto.gastos)
-        
+
         fila.setAttribute("class", "row");
 
         for (element of [persona.nombre, persona.apellido, presupuesto.getMontoInicial(), presupuesto.getGastos(), presupuesto.getRestoNeto(), presupuesto.getRestoDiario()]) {
@@ -30,5 +30,5 @@ function renderPersonasTable() {
     }
     $('#tabla-personas').append(tableBody);
 }
-  
-    
+
+

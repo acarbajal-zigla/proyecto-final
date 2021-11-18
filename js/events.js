@@ -1,18 +1,18 @@
-$('#agregar-persona-button').click(function(){
+$('#agregar-persona-button').click(function () {
     $('#ingreso-persona').toggle();
     //Escondo los demas
     $('#eliminar-persona').hide();
     $('#tabla-personas').hide();
 });
 
-$('#eliminar-persona-button').click(function(){
+$('#eliminar-persona-button').click(function () {
     $('#eliminar-persona').toggle();
     //Escondo los demas
     $('#ingreso-persona').hide();
     $('#tabla-personas').hide();
 });
 
-$('#ver-personas-button').click(function() {
+$('#ver-personas-button').click(function () {
     $('#tabla-personas').toggle();
     //Escondo los demas
     $('#eliminar-persona').hide();
@@ -21,7 +21,7 @@ $('#ver-personas-button').click(function() {
 });
 
 // Escuchar el evento submit del formulario ppal
-$('#form-persona').submit(function(event) {
+$('#form-persona').submit(function (event) {
     event.preventDefault();
 
     const dni = $('#input-dni').val();
@@ -31,7 +31,7 @@ $('#form-persona').submit(function(event) {
     const gastosMensuales = $('#input-gastosMensuales').val();
 
     const persona = new Persona(dni, nombre, apellido, montoInicial, gastosMensuales);
-    if (persona){
+    if (persona) {
         create(persona);
     }
     $('#form-persona').trigger('reset');
