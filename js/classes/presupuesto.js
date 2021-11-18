@@ -3,21 +3,21 @@ class Presupuesto {
         if (isNaN(montoInicial) || isNaN(gastos)) {
             return false;
         }
-        this.montoInicial = parseFloat(montoInicial ? montoInicial : 0);
-        this.gastos = parseFloat(gastos ? gastos : 0);
+        this.montoInicial = parseFloat(montoInicial ? parseFloat(montoInicial).toFixed(2) : 0);
+        this.gastos = parseFloat(gastos ? parseFloat(gastos).toFixed(2) : 0);
     }
 
     getGastos() {
-        return this.gastos;
+        return this.gastos.toFixed(2);
     }
 
     getMontoInicial() {
-        return this.montoInicial;
+        return this.montoInicial.toFixed(2);
     }
 
     getRestoNeto() {
         const resto = this.montoInicial - this.gastos
-        return resto > 0 ? resto : 0
+        return resto > 0 ? resto.toFixed(2) : 0
     }
 
     getRestoDiario() {

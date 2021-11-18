@@ -1,7 +1,8 @@
 // Obtener elmentos del DOM
-let personas = JSON.parse(localStorage.getItem('personas')) || [];
+let personas = JSON.parse(localStorage.getItem("personas")) || [];
+if(personas.length == 0)
+    setDatos();
 
-renderPersonasTable();
 
 function getAll() {
     return JSON.parse(localStorage.getItem("personas"));
@@ -10,11 +11,11 @@ function getAll() {
 // Agrego una persona a la lista
 function create(persona) {
     if (Object.keys(persona).length === 0){
-        alert("Revise que los datos sean correctos");
+        console.log("Revise que los datos sean correctos");
     }
     else {
-        if (findPersona(persona.dni) == false) {
-            alert('Ya existe una persona con ese DNI.');
+        if (findPersona(persona.dni) == true) {
+            console.log('Ya existe una persona con ese DNI.');
         }
         else {
             personas.push(persona);
@@ -34,6 +35,9 @@ const remove = (dni) => {
         const index = personas.indexOf(persona);
         personas.splice(index, 1);
         localStorage.setItem('personas', JSON.stringify(personas));
+    }
+    else{
+        console.log(`No se encontró la persona con dni ${dni}`);
     }
 }
 

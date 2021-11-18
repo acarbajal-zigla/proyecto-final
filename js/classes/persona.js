@@ -11,7 +11,6 @@ class Persona {
         if (presupuesto === false){
             ret = false;
         }   
-        console.log(ret)
         if (ret == true){
             this.dni = parseInt(dni);
             this.nombre = nombre;

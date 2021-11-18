@@ -4,6 +4,7 @@ function renderPersonasTable() {
     let tableBody = document.createElement("tbody");
     let header = ['Nombre', 'Apellido', 'Presupuesto inicial', 'Gastos', 'Presupuesto para el resto del mes', 'Monto por día (resto del mes)'];
     let filaTitulos = document.createElement("tr");
+    filaTitulos.setAttribute("class", "row header");
 
     for (let element of header) {
         let celda = document.createElement("td");
@@ -18,7 +19,9 @@ function renderPersonasTable() {
 
         for (element of [persona.nombre, persona.apellido, presupuesto.getMontoInicial(), presupuesto.getGastos(), presupuesto.getRestoNeto(), presupuesto.getRestoDiario()]) {
             let celda = document.createElement("td");
+            celda.setAttribute("class", "cell");
             celda.appendChild(document.createTextNode(element));
+            fila.setAttribute("class", "row");
             fila.appendChild(celda);
         }
         tableBody.appendChild(fila);

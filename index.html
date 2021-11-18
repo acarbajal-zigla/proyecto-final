@@ -5,6 +5,8 @@
     <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="css/dropdown.css">
     <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/form.css">
+
 
     <title>Gestor de gastos</title>
     <style>
@@ -16,21 +18,22 @@
     </style>
 </head>
 
-<div class="dropdown"> 
-    <button class="dropbtn">Menú</button>
-    <div class="dropdown-content">
-        <button id=agregar-persona-button style="width: available;">Agregar persona</button>
-        <button id=eliminar-persona-button style="width: available;">Eliminar persona</button>
-        <button id=ver-personas-button style="width: available;">Ver lista</button>
-    </div>
-</div>
-
 <body id=main-body>
-    <h2>Bienvenidx al gestor de gastos</h2>
-
-    <div id=ingreso-persona style=display:none>
+    <div>
+        <ul>
+            <li><a href="#" aria-haspopup="true">Menú</a>
+                <ul aria-label="submenu">
+                    <li><a href="#" id=agregar-persona-button style="width: available;">Agregar persona</a></li>
+                    <li><a href="#" id=eliminar-persona-button style="width: available;">Eliminar persona</a></li>
+                    <li><a href="#" id=ver-personas-button style="width: available;">Ver lista de personas</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id=ingreso-persona style="display:none; padding: 2.5rem;">
         <h3>Ingresar una nueva persona</h3>
-        <form id="form-persona">
+        <form id="form-persona" class="form">
             <label for='input-dni'>DNI</label><br>
             <input id='input-dni' min=0 type="number"><br>
             <label for='input-nombre'>Nombre</label><br>
@@ -45,7 +48,7 @@
                 <button>Agregar persona</button>
             </div>
     </div>
-    <div id=eliminar-persona style=display:none>
+    <div id=eliminar-persona style="display:none; padding: 2.5rem;">
         </form>
         <h3>Eliminar un registro</h3>
         <form id="form-eliminar-persona">
@@ -56,11 +59,14 @@
             </div>
         </form>
     </div>
-    <table id=tabla-personas style=display:none></table>
+    <div class="wrapper" style="padding: 4.5rem;">
+        <table id=tabla-personas class="table"></table>
+    </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="module" src="./js/app.js"></script>
+<script src="./js/ajax.js"></script>
 <script src="./js/classes/persona.js"></script>
 <script src="./js/classes/presupuesto.js"></script>
 <script src="./js/my_funcs.js"></script>
