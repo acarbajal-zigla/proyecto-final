@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="css/dropdown.css">
     <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/form.css">
-
-
     <title>Gestor de gastos</title>
     <style>
+        html, body {
+        margin: 0
+        }
         table,
         th,
         td {
@@ -19,43 +20,78 @@
 </head>
 
 <body id=main-body>
-    <div>
+    <header style="
+        height: 3.5rem;
+        margin: 0;
+        background-color: darkorange;
+        ";>
         <ul>
-            <li><a href="#" aria-haspopup="true">Menú</a>
+            <li><a href="#" aria-haspopup="true">Mi organizacion</a>
                 <ul aria-label="submenu">
+                    <li><a href="#" id=ver-personas-button style="width: available;">Mis datos</a></li>
+                    <li><a href="#" id=agregar-persona-button style="width: available;">Estadisticas</a></li>
+                    <li><a href="#" id=eliminar-persona-button style="width: available;">Cargar formulario:</a>
+                        <ul>
+                            <li><a href="#" id=cargar-donativo style="width: available;">Cargar donativo</a></li>
+                            <li><a href="#">A LA DERECHAAAA</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#" aria-haspopup="true">Admin</a>
+                <ul aria-label="submenu">
+                    <li><a href="#" id=ver-personas-button style="width: available;">Ver lista de personas</a></li>
                     <li><a href="#" id=agregar-persona-button style="width: available;">Agregar persona</a></li>
                     <li><a href="#" id=eliminar-persona-button style="width: available;">Eliminar persona</a></li>
-                    <li><a href="#" id=ver-personas-button style="width: available;">Ver lista de personas</a></li>
                 </ul>
             </li>
         </ul>
+    </header>
+
+    <div id=ingreso-persona class="form">
+        <div class="title">Nuevo ingreso</div>
+        <form id="form-persona">
+            <div class="input-container ic1">
+                <input id='input-dni' class="input" min=0 step=1 type="number" placeholder=" "/>
+                <div class="cut cut-short"></div>
+                <label for='input-dni' class="placeholder">DNI</label>
+            </div>
+            <div class="input-container ic2">
+                <input id='input-nombre' class="input" type="text" placeholder=" "/>
+                <div class="cut"></div>
+                <label for='input-nombre' class="placeholder">Nombre</label>
+            </div>
+            <div class="input-container ic2">
+                <input id='input-apellido' class="input" type="text" placeholder=" "/>
+                <div class="cut"></div>
+                <label for='input-apellido' class="placeholder">Apellido</label>
+            </div>
+            <div class="input-container ic2">
+                <input id='input-montoInicial' class="input" min=0 type="number" placeholder=" "/>
+                <div class="cut"></div>
+                <label for='input-montoInicial' class="placeholder">Monto inicial</label>
+            </div>
+            <div class="input-container ic2">
+                <input id=input-gastosMensuales class="input" min=0 type="number" placeholder=" "/>
+                <div class="cut"></div>
+                <label for='input-gastosMensuales' class="placeholder">Gastos mensuales</label>
+            </div>
+            <div>
+                <button class="submit">Agregar persona</button>
+            </div>
+        </form>
     </div>
 
-    <div id=ingreso-persona style="display:none; padding: 2.5rem;">
-        <h3>Ingresar una nueva persona</h3>
-        <form id="form-persona" class="form">
-            <label for='input-dni'>DNI</label><br>
-            <input id='input-dni' min=0 type="number"><br>
-            <label for='input-nombre'>Nombre</label><br>
-            <input id='input-nombre' type="text"><br>
-            <label for='input-apellido'>Apellido</label><br>
-            <input id='input-apellido' type="text"><br>
-            <label for='input-montoInicial'>Monto inicial</label><br>
-            <input id='input-montoInicial' min=0 type="number"><br>
-            <label for='input-gastosMensuales'>Gastos mensuales</label><br>
-            <input id=input-gastosMensuales min=0 type="number"><br>
-            <div>
-                <button>Agregar persona</button>
-            </div>
-    </div>
-    <div id=eliminar-persona style="display:none; padding: 2.5rem;">
-        </form>
-        <h3>Eliminar un registro</h3>
+    <div id=eliminar-persona class="form" style="height: 270px;">
+        <div class="title">Eliminar un registro</div>
         <form id="form-eliminar-persona">
-            <label for=input-eliminar-dni>DNI (sin puntos)</label><br>
-            <input id=input-eliminar-dni type="number" min="0" step="1">
+            <div class="input-container ic2">
+                <input id=input-eliminar-dni class="input" type="number" min="0" step="1" placeholder=" "/>
+                <div class="cut"></div>
+                <label for=input-eliminar-dni class="placeholder">DNI</label>
+            </div>
             <div>
-                <button>Eliminar</button>
+                <button class="submit">Eliminar</button>
             </div>
         </form>
     </div>
@@ -64,8 +100,15 @@
     </div>
 </body>
 
+<!-- React -->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Mis modulos -->
 <script type="module" src="./js/app.js"></script>
 <script src="./js/ajax.js"></script>
 <script src="./js/classes/persona.js"></script>

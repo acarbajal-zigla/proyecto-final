@@ -1,16 +1,18 @@
 a {
     text-decoration: none;
-    display: block;
+    height: 100%;
+    display: flex;
+    align-items:center;
 }
 
 nav {
-    position: fixed;
     font-family: monospace;
 }
 
 ul {
 background: darkorange;
 list-style: none;
+height:inherit;
 margin: 0;
 padding-left: 0;
 display: block;
@@ -21,14 +23,17 @@ color: #fff;
 background: darkorange;
 display: block;
 float: left;
-padding: 1rem;
+height:inherit;
 position: relative;
+padding-left: 15px;
+padding-right: 15px;
 text-decoration: none;
 transition-duration: 0.5s;
+height: 100%;
 }
 
-li a {
-color: #fff;
+ul li a {
+    color: #fff;
 }
 
 li:hover,
@@ -42,15 +47,14 @@ outline: none;
 }
 
 ul li ul {
-background: orange;
-visibility: hidden;
-opacity: 0;
-min-width: 5rem;
-position: absolute;
-transition: all 0.5s ease;
-margin-top: 1rem;
-left: 0;
-display: none;
+    background: orange;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    left: 0;
+    display: none;
 }
 
 ul li:hover > ul,
@@ -63,6 +67,33 @@ ul li ul:focus {
 }
 
 ul li ul li {
+clear: both;
+width: 100%;
+}
+
+ul li ul li ul{
+    background: orange;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    left: 100%;
+    top:0;
+    display: none;
+}
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus,
+ul li ul li ul:hover,
+ul li ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+ul li ul li ul li {
 clear: both;
 width: 100%;
 }
